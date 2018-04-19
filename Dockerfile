@@ -40,19 +40,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV HOME=/home
 RUN chmod 777 /home
 
-# Install Miniconda
+# Install Anaconda
 RUN curl -so ~/anaconda.sh https://repo.continuum.io/archive/Anaconda2-5.1.0-Linux-x86_64.sh \
  && chmod +x ~/anaconda.sh \
  && ~/anaconda.sh -b -p ~/anaconda \
  && rm ~/anaconda.sh
 ENV PATH=/home/anaconda/bin:$PATH
-
-RUN /home/anaconda/bin/conda install conda-build \
- && /home/anaconda/bin/conda create -y --name py27 python=2.7.13 \
- && /home/anaconda/bin/conda clean -ya
-ENV CONDA_DEFAULT_ENV=py27
-ENV CONDA_PREFIX=/home/anaconda/envs/$CONDA_DEFAULT_ENV
-ENV PATH=$CONDA_PREFIX/bin:$PATH
 
 RUN conda install pytorch torchvision cuda90 -c pytorch
 
