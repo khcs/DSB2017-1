@@ -49,7 +49,7 @@ ENV PATH=/home/anaconda/bin:$PATH
 
 RUN conda install pytorch torchvision cuda90 -c pytorch
 
-RUN pip install h5py SimpleITK nvidia-ml-py pyparsing scipy pandas scikit-image dicom
+RUN pip install h5py SimpleITK nvidia-ml-py pyparsing scipy pandas scikit-image dicom nibabel
 RUN pip install -Iv numpy==1.11.3
 
 # matplotlib config (used by benchmark)
